@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes text-gradient {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 220% center;
+  }
+}
+
+.gradient-animation {
+  animation: text-gradient 3s linear infinite;
+}
+
+.canvas-block * {
+  overflow-y: hidden;
+}
