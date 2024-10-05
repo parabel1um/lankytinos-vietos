@@ -27,14 +27,30 @@ export default function Home() {
 
   const locations = [
     {
-      title: "Kabantis lynų tiltas Anykščių šilelyje",
-      image: "",
-      desc: "Šiemet Anykščių šilelyje išdygo ant plieninių lynų pakibęs pėsčiųjų ir dviračių tiltas per Šventąją. Pastarasis rado vietą netoli Medžių Lajų tako ir Puntuko akmens ir dabar jungia kairiojo kranto dviračių taką su greitai atsidarysiančiu dešiniojo kranto dviračių taku. Šis beždžionių tiltas nepaliko abejingų ne tik socialiniuose tinkluose, bet ir pačiame šilelyje.",
+      title: "Parnidžio kopa, E. A. Jonušo g., Nida",
+      image: "parnidzio-kopa.jpg",
+      desc: "Tai – viena gausiai lankomų mūsų šalies vietų, kurias kasmet aplanko tūkstančiai turistų iš visos Lietuvos ir pasaulio. 52 m aukščio Parnidžio kopa yra puiki vieta, jei norite apžvelgti Nidos apylinkes. Šios kopos viršūnėje yra įrengta aikštelė, nuo kurios, atsiveria Nidos gyvenvietė panorama, o taip pat – Baltijos jūra. Esant puikiam orui, bus galima išvysti ir Ventės ragą.",
     },
-    {},
-    {},
-    {},
-    {},
+    {
+      title: "Medžių lajų takas, Dvaronių k. 5, Anykščiai",
+      image: "lynu-tiltas.jpg",
+      desc: "Šis takas yra ypatingas tuo, kad tai – pirmasis takas Baltijos valstybėse ir visoje Rytų Europoje, kuri galima leistis į neįtikėtinai malonius bei žaismingus pasivaikščiojimus medžių lajų lygyje. Kompleksą sudaro informacinis centras, Medžių lajų takas ir apžvalgos bokštas. Palei taką auga patys įvairiausi medžiai: paprastosios eglės, paprastieji ąžuolai, paprastieji klevai, karpotieji beržai ir t.t.",
+    },
+    {
+      title: "Burbiškio dvaras, Parko gatvė 1B, Burbiškis",
+      image: "dvaras.jpg",
+      desc: "Įsikūręs Anykščių regioniniame parke, netoli Rubikių ežero. Dvaro ansamblis buvo restauruotas 1853 metais, atkurti autentiški lubų ir sienų tapybos darbai, originalios rudojo uosio durys, išlikę vertingi dekoruoti priesieniniai židiniai. Šiandien Burbiškio dvaras yra tikrų tikriausia poilsio oazė visai šeimai, teikiamos apgyvendinimo paslaugos, veikia restoranas, organizuojamos ekskursijos ir t.t.",
+    },
+    {
+      title: "Kauno botanikos sodas, Ž. E. Žilibero g. 6, Kaunas",
+      image: "botanikos-sodas.jpg",
+      desc: "Jei norite pasidžiaugti tūkstančiais skirtingų augalų bei jų žiedų, išvysti rečiausių rūšių augalų, tai Kauno botanikos sodas yra viena iš tų vietų, kurią būtinai turite aplankyti. Prieš planuodami apsilankymą, nepamirškite, kad skirtingi augalai žydi skirtingu metu, todėl, pasidomėkite, ką bus galima pamatyti. Taip pat galima sudalyvauti ir įvairiose ekskursijose, pavyzdžiui, „Nuo Aukštosios Fredos dvaro iki šiuolaikiško botanikos sodo“, „Gėlynų spalvos, naujovės ir kasdieniai rūpesčiai“, „Atogrąžų ir paatogrąžių augalai oranžerijoje“ ir t.t. ",
+    },
+    {
+      title: "Gedimino pilis, Arsenalo g. 5, Vilnius",
+      image: "gedimino-pilis.jpg",
+      desc: "Tikrai netrūksta priežasčių, kodėl turite aplankyti šį objektą, jei to, vis dar nepadarėte: tai yra viena iš Senamiesčio vietų, kuri vaizduojamas įvairiausiuose meno kūriniuose, o užlipus ant Gedimino kalno ar pakilus dar aukščiau – ant Gedimino bokšto apžvalgos aikštelės - atsiveria nuostabiausios Vilniaus panoramos, saulėlydžiai, raudoni Vilniaus stogai, bažnyčių bokštai, siauros gatvelės atrodo stulbinančiai. Na, o Gedmino bokšte galite pamatyti istorinę parodą, kurioje eksponuojami Vilniaus pilių rekonstrukcijos modeliai, ginkluotė ir senojo Vilniaus ikonografika.",
+    },
   ];
 
   useEffect(() => {
@@ -47,7 +63,7 @@ export default function Home() {
 
         const newIndex = Math.min(
           locations.length - 1,
-          Math.floor((window.scrollY - scrollMax * (1 / 3)) / vienosVietosIlgis) // Corrected parentheses
+          Math.floor((window.scrollY - scrollMax * (1 / 3)) / vienosVietosIlgis)
         );
 
         setLocationIndex(newIndex);
@@ -66,13 +82,14 @@ export default function Home() {
   const XPercent = Math.max(0, 50 - mapScrolled * 50);
 
   return (
-    <div className="relative h-[5000px] w-screen bg-[#fff]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_300px,#304da3,transparent)]"></div>
+    <div className="relative h-[5000px] w-screen z-0">
+      <div className="absolute h-[1000px] w-full -top-[500px] z-0 circle-gradient"></div>
+      <div className="absolute h-full w-full z-10 noise"></div>
       <p className="sticky top-0">
         {mapScrolled} mapScrolled {locationIndex}
       </p>
       <div className="absolute h-full z-10 w-full top-[200px] flex justify-center items-flex">
-        <h1 className="gradient-animation z-10 font-bold text-5xl tracking-tight bg-gradient-to-r from-[#25be74] via-[#11aa60] to-[rgb(18,207,185)] text-transparent bg-clip-text bg-[180%_auto]">
+        <h1 className="gradient-animation z-10 font-medium text-7xl tracking-tight bg-gradient-to-r from-[#25be74] via-[#11aa60] to-[rgb(18,207,185)] text-transparent bg-clip-text bg-[180%_auto]">
           Lankytinos vietos Lietuvoje
         </h1>
       </div>
@@ -82,7 +99,7 @@ export default function Home() {
           <Canvas
             camera={{
               position: [0, 23, 20],
-              fov: 70,
+              fov: 68,
               zoom: 1.3,
               aspect: 2,
             }}
@@ -98,6 +115,118 @@ export default function Home() {
               <CameraOrbitController mapScrolled={mapScrolled} />
             </Suspense>
           </Canvas>
+          {locationIndex == 1 && (
+            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[22%] left-[19%] z-10">
+              <div className="w-fit h-fit ">
+                <Image
+                  src={"/pointer-pin.svg"}
+                  width={48}
+                  height={48}
+                  alt="Pointer"
+                />
+              </div>
+              <div className="w-[600px] h-fit p-3 text-white gap-7 bg-black bg-opacity-60 top-0 left-0 flex justify-between items-center relative rounded-lg ring-[#3f3f3f] ring-4 ring-offset-4">
+                <div className="flex flex-col gap-2 w-1/2">
+                  <p>{locations[0].title}</p>
+                  <p className="text-md text-medium">{locations[0].desc}</p>
+                </div>
+
+                <div className="w-1/2 h-full flex justify-center items-center">
+                  <Image
+                    src={`/locations/${locations[0].image}`}
+                    alt={locations[0].title}
+                    width={500}
+                    height={300}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+          {locationIndex == 2 && (
+            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[8%] left-[63%] z-10">
+              <div className="w-fit h-fit ">
+                <Image
+                  src={"/pointer-pin.svg"}
+                  width={48}
+                  height={48}
+                  alt="Pointer"
+                />
+              </div>
+              <div className="w-[600px] h-fit p-3 text-white gap-7 bg-black bg-opacity-60 top-0 left-0 flex justify-between items-center relative rounded-lg ring-[#3f3f3f] ring-4 ring-offset-4">
+                <div className="flex flex-col gap-2 w-1/2">
+                  <p>{locations[1].title}</p>
+                  <p className="text-md text-medium">{locations[1].desc}</p>
+                </div>
+
+                <div className="w-1/2 h-full flex justify-center items-center">
+                  <Image
+                    src={`/locations/${locations[1].image}`}
+                    alt={locations[1].title}
+                    width={500}
+                    height={300}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+          {locationIndex == 3 && (
+            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[8%] left-[64.5%] z-10">
+              <div className="w-fit h-fit ">
+                <Image
+                  src={"/pointer-pin.svg"}
+                  width={48}
+                  height={48}
+                  alt="Pointer"
+                />
+              </div>
+              <div className="w-[600px] h-fit p-3 text-white gap-7 bg-black bg-opacity-60 top-0 left-0 flex justify-between items-center relative rounded-lg ring-[#3f3f3f] ring-4 ring-offset-4">
+                <div className="flex flex-col gap-2 w-1/2">
+                  <p>{locations[2].title}</p>
+                  <p className="text-md text-medium">{locations[2].desc}</p>
+                </div>
+
+                <div className="w-1/2 h-full flex justify-center items-center">
+                  <Image
+                    src={`/locations/${locations[2].image}`}
+                    alt={locations[2].title}
+                    width={500}
+                    height={300}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+          {locationIndex == 3 && (
+            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[8%] left-[64.5%] z-10">
+              <div className="w-fit h-fit ">
+                <Image
+                  src={"/pointer-pin.svg"}
+                  width={48}
+                  height={48}
+                  alt="Pointer"
+                />
+              </div>
+              <div className="w-[600px] h-fit p-3 text-white gap-7 bg-black bg-opacity-60 top-0 left-0 flex justify-between items-center relative rounded-lg ring-[#3f3f3f] ring-4 ring-offset-4">
+                <div className="flex flex-col gap-2 w-1/2">
+                  <p>{locations[2].title}</p>
+                  <p className="text-md text-medium">{locations[2].desc}</p>
+                </div>
+
+                <div className="w-1/2 h-full flex justify-center items-center">
+                  <Image
+                    src={`/locations/${locations[2].image}`}
+                    alt={locations[2].title}
+                    width={500}
+                    height={300}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
         <div
           className="w-5/12 h-fit z-0 -rotate-12 absolute left-0"
@@ -169,16 +298,6 @@ export default function Home() {
             className="w-full h-full object-cover"
           />
         </div>
-        {locationIndex == 1 && (
-          <div className="absolute w-96 h-96 top-1/4 left-1/2 z-10 bg-[#000] opacity-50">
-            <Image
-              src={"/pointer-pin.svg"}
-              width={24}
-              height={24}
-              alt="Pointer pin"
-            />
-          </div>
-        )}
       </div>
     </div>
   );
