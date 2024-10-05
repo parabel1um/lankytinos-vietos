@@ -34,17 +34,26 @@ export default function Home() {
     {},
     {},
     {},
+    {},
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setMapScrolled(
-        Math.min(
-          1,
-          2 *
-            (window.scrollY / (document.body.scrollHeight - window.innerHeight))
-        )
-      );
+      const scrollMax = document.body.scrollHeight - window.innerHeight;
+      setMapScrolled(Math.min(1, 3 * (window.scrollY / scrollMax)));
+
+      if (window.scrollY > scrollMax * (1 / 3)) {
+        const vienosVietosIlgis = (scrollMax * (2 / 3)) / locations.length;
+
+        const newIndex = Math.min(
+          locations.length - 1,
+          Math.floor((window.scrollY - scrollMax * (1 / 3)) / vienosVietosIlgis) // Corrected parentheses
+        );
+
+        setLocationIndex(newIndex);
+      } else {
+        setLocationIndex(0);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -54,12 +63,14 @@ export default function Home() {
     };
   }, []);
 
-  const translateXPercentage = Math.max(0, 50 - mapScrolled * 50);
+  const XPercent = Math.max(0, 50 - mapScrolled * 50);
 
   return (
-    <div className="relative min-h-[200vh] w-screen bg-[#00165e]">
+    <div className="relative h-[5000px] w-screen bg-[#fff]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_300px,#304da3,transparent)]"></div>
-      <p>{mapScrolled} mapScrolled</p>
+      <p className="sticky top-0">
+        {mapScrolled} mapScrolled {locationIndex}
+      </p>
       <div className="absolute h-full z-10 w-full top-[200px] flex justify-center items-flex">
         <h1 className="gradient-animation z-10 font-bold text-5xl tracking-tight bg-gradient-to-r from-[#25be74] via-[#11aa60] to-[rgb(18,207,185)] text-transparent bg-clip-text bg-[180%_auto]">
           Lankytinos vietos Lietuvoje
@@ -67,7 +78,7 @@ export default function Home() {
       </div>
 
       <div className="mt-96 sticky top-0 flex justify-center h-screen w-screen items-center z-10">
-        <div className="w-[1500px] h-[800px]">
+        <div className="w-[1500px] h-[800px] relative z-10">
           <Canvas
             camera={{
               position: [0, 23, 20],
@@ -88,13 +99,10 @@ export default function Home() {
             </Suspense>
           </Canvas>
         </div>
-      </div>
-
-      <div className="relative z-20 h-full w-full bottom-0">
         <div
-          className="w-5/12 h-fit z-20 -rotate-12 relative bottom-0"
+          className="w-5/12 h-fit z-0 -rotate-12 absolute left-0"
           style={{
-            transform: `translateX(${translateXPercentage}%)`,
+            transform: `translateX(${XPercent + 10}%)`,
           }}
         >
           <Image
@@ -105,10 +113,73 @@ export default function Home() {
             className="w-full h-full object-cover"
           />
         </div>
+        <div
+          className="w-5/12 h-fit z-0 -rotate-12 absolute left-0"
+          style={{
+            transform: `translateX(${XPercent + 20}%)`,
+          }}
+        >
+          <Image
+            src="/gradients/gradient1.png"
+            alt="gradient"
+            width={740}
+            height={818}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          className="w-5/12 h-fit z-0 -rotate-12 absolute left-0"
+          style={{
+            transform: `translateX(${140 - XPercent}%)`,
+          }}
+        >
+          <Image
+            src="/gradients/gradient4.png"
+            alt="gradient"
+            width={740}
+            height={818}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          className="w-5/12 h-fit z-0 -rotate-12 absolute left-0"
+          style={{
+            transform: `translateX(${120 - XPercent}%)`,
+          }}
+        >
+          <Image
+            src="/gradients/gradient2.png"
+            alt="gradient"
+            width={740}
+            height={818}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div
+          className="w-5/12 h-fit z-0 -rotate-12 absolute left-0"
+          style={{
+            transform: `translateX(${40 + XPercent}%)`,
+          }}
+        >
+          <Image
+            src="/gradients/gradient3.png"
+            alt="gradient"
+            width={740}
+            height={818}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        {locationIndex == 1 && (
+          <div className="absolute w-96 h-96 top-1/4 left-1/2 z-10 bg-[#000] opacity-50">
+            <Image
+              src={"/pointer-pin.svg"}
+              width={24}
+              height={24}
+              alt="Pointer pin"
+            />
+          </div>
+        )}
       </div>
-
-      {/* Additional scrollable content */}
-      <div className="h-[100vh] w-full"></div>
     </div>
   );
 }
