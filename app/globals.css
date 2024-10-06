@@ -27,7 +27,7 @@ body {
 }
 
 .noise {
-  background: linear-gradient(rgba(226, 224, 255, 0.3), rgba(45, 45, 45, 0.3)),
+  background: linear-gradient(rgba(226, 224, 255, 0.3), rgba(24, 24, 24, 0.3)),
     url("noise.svg");
   opacity: 0.8;
 }
@@ -38,4 +38,8 @@ body {
     rgba(0, 30, 114, 0.331),
     transparent
   );
+}
+
+.canvas-block * {
+  overflow-y: hidden !important;
 }

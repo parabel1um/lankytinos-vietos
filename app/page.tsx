@@ -59,14 +59,15 @@ export default function Home() {
       setMapScrolled(Math.min(1, 3 * (window.scrollY / scrollMax)));
 
       if (window.scrollY > scrollMax * (1 / 3)) {
-        const vienosVietosIlgis = (scrollMax * (2 / 3)) / locations.length;
+        const vienosVietosIlgis =
+          (scrollMax * (2 / 3)) / (locations.length + 1);
 
-        const newIndex = Math.min(
-          locations.length - 1,
+        const index = Math.min(
+          locations.length,
           Math.floor((window.scrollY - scrollMax * (1 / 3)) / vienosVietosIlgis)
         );
 
-        setLocationIndex(newIndex);
+        setLocationIndex(index);
       } else {
         setLocationIndex(0);
       }
@@ -84,23 +85,20 @@ export default function Home() {
   return (
     <div className="relative h-[5000px] w-screen z-0">
       <div className="absolute h-[1000px] w-full -top-[500px] z-0 circle-gradient"></div>
-      <div className="absolute h-full w-full z-10 noise"></div>
-      <p className="sticky top-0">
-        {mapScrolled} mapScrolled {locationIndex}
-      </p>
+      <div className="absolute h-[5200px] w-full z-10 noise"></div>
+      <div className="sticky top-0 w-2 h-2"></div>
       <div className="absolute h-full z-10 w-full top-[200px] flex justify-center items-flex">
-        <h1 className="gradient-animation z-10 font-medium text-7xl tracking-tight bg-gradient-to-r from-[#25be74] via-[#11aa60] to-[rgb(18,207,185)] text-transparent bg-clip-text bg-[180%_auto]">
+        <h1 className="gradient-animation z-10 font-medium text-6xl tracking-tight bg-gradient-to-r from-[#25be74] via-[#11aa60] to-[rgb(18,207,185)] text-transparent bg-clip-text bg-[180%_auto]">
           Lankytinos vietos Lietuvoje
         </h1>
       </div>
 
       <div className="mt-96 sticky top-0 flex justify-center h-screen w-screen items-center z-10">
-        <div className="w-[1500px] h-[800px] relative z-10">
+        <div className="w-[1800px] h-[950px] relative z-10">
           <Canvas
             camera={{
               position: [0, 23, 20],
-              fov: 68,
-              zoom: 1.3,
+              fov: 70,
               aspect: 2,
             }}
             className="canvas-block"
@@ -116,7 +114,7 @@ export default function Home() {
             </Suspense>
           </Canvas>
           {locationIndex == 1 && (
-            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[22%] left-[19%] z-10">
+            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[28%] left-[19.7%] z-10">
               <div className="w-fit h-fit ">
                 <Image
                   src={"/pointer-pin.svg"}
@@ -144,7 +142,7 @@ export default function Home() {
             </div>
           )}
           {locationIndex == 2 && (
-            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[8%] left-[63%] z-10">
+            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[10%] left-[62%] z-10">
               <div className="w-fit h-fit ">
                 <Image
                   src={"/pointer-pin.svg"}
@@ -172,7 +170,7 @@ export default function Home() {
             </div>
           )}
           {locationIndex == 3 && (
-            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[8%] left-[64.5%] z-10">
+            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[12%] left-[63%] z-10">
               <div className="w-fit h-fit ">
                 <Image
                   src={"/pointer-pin.svg"}
@@ -199,8 +197,8 @@ export default function Home() {
               </div>
             </div>
           )}
-          {locationIndex == 3 && (
-            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[8%] left-[64.5%] z-10">
+          {locationIndex == 4 && (
+            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[36%] left-[50%] z-10">
               <div className="w-fit h-fit ">
                 <Image
                   src={"/pointer-pin.svg"}
@@ -211,14 +209,42 @@ export default function Home() {
               </div>
               <div className="w-[600px] h-fit p-3 text-white gap-7 bg-black bg-opacity-60 top-0 left-0 flex justify-between items-center relative rounded-lg ring-[#3f3f3f] ring-4 ring-offset-4">
                 <div className="flex flex-col gap-2 w-1/2">
-                  <p>{locations[2].title}</p>
-                  <p className="text-md text-medium">{locations[2].desc}</p>
+                  <p>{locations[3].title}</p>
+                  <p className="text-md text-medium">{locations[3].desc}</p>
                 </div>
 
                 <div className="w-1/2 h-full flex justify-center items-center">
                   <Image
-                    src={`/locations/${locations[2].image}`}
-                    alt={locations[2].title}
+                    src={`/locations/${locations[3].image}`}
+                    alt={locations[3].title}
+                    width={500}
+                    height={300}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+          {locationIndex == 5 && (
+            <div className="absolute inline-flex items-center gap-3 w-fit h-fit top-[37.5%] left-[65%] z-10">
+              <div className="w-fit h-fit ">
+                <Image
+                  src={"/pointer-pin.svg"}
+                  width={48}
+                  height={48}
+                  alt="Pointer"
+                />
+              </div>
+              <div className="w-[600px] h-fit p-3 text-white gap-7 bg-black bg-opacity-60 top-0 left-0 flex justify-between items-center relative rounded-lg ring-[#3f3f3f] ring-4 ring-offset-4">
+                <div className="flex flex-col gap-2 w-1/2">
+                  <p>{locations[4].title}</p>
+                  <p className="text-md text-medium">{locations[4].desc}</p>
+                </div>
+
+                <div className="w-1/2 h-full flex justify-center items-center">
+                  <Image
+                    src={`/locations/${locations[4].image}`}
+                    alt={locations[4].title}
                     width={500}
                     height={300}
                     className="object-contain"
