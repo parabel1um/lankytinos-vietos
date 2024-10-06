@@ -40,6 +40,14 @@ body {
   );
 }
 
+.canvas-block *::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  display: none;
+}
+
 .canvas-block * {
-  overflow-y: hidden !important;
+  scrollbar-width: none;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
 }
