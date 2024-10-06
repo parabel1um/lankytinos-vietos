@@ -131,7 +131,7 @@ export default function Home() {
 
                 <div className="w-1/2 h-full flex justify-center items-center">
                   <Image
-                    src={`/locations/${locations[0].image}`}
+                    src={`/vietos/${locations[0].image}`}
                     alt={locations[0].title}
                     width={500}
                     height={300}
@@ -159,7 +159,7 @@ export default function Home() {
 
                 <div className="w-1/2 h-full flex justify-center items-center">
                   <Image
-                    src={`/locations/${locations[1].image}`}
+                    src={`/vietos/${locations[1].image}`}
                     alt={locations[1].title}
                     width={500}
                     height={300}
@@ -187,7 +187,7 @@ export default function Home() {
 
                 <div className="w-1/2 h-full flex justify-center items-center">
                   <Image
-                    src={`/locations/${locations[2].image}`}
+                    src={`/vietos/${locations[2].image}`}
                     alt={locations[2].title}
                     width={500}
                     height={300}
@@ -215,7 +215,7 @@ export default function Home() {
 
                 <div className="w-1/2 h-full flex justify-center items-center">
                   <Image
-                    src={`/locations/${locations[3].image}`}
+                    src={`/vietos/${locations[3].image}`}
                     alt={locations[3].title}
                     width={500}
                     height={300}
@@ -243,7 +243,7 @@ export default function Home() {
 
                 <div className="w-1/2 h-full flex justify-center items-center">
                   <Image
-                    src={`/locations/${locations[4].image}`}
+                    src={`/vietos/${locations[4].image}`}
                     alt={locations[4].title}
                     width={500}
                     height={300}
